@@ -53,6 +53,7 @@ class CotLayer(nn.Module):
             nn.BatchNorm2d(dim//factor),
             nn.ReLU(inplace=True),
             nn.Conv2d(dim//factor, pow(kernel_size, 2) * dim // share_planes, kernel_size=1),
+            """注意这里的GroupNormlization"""
             nn.GroupNorm(num_groups=dim // share_planes, num_channels=pow(kernel_size, 2) * dim // share_planes)
         )
 
